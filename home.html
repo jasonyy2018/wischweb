@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">WCKJ - 创新人工智能解决方案</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind配置 -->
+        <style>
+            /* 瀑布流布局样式 */
+            .masonry-grid {
+                column-count: 1;
+                column-gap: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            @media (min-width: 768px) {
+                .masonry-grid {
+                    column-count: 2;
+                }
+            }
+            @media (min-width: 1024px) {
+                .masonry-grid {
+                    column-count: 3;
+                }
+            }
+            .masonry-item {
+                break-inside: avoid;
+                margin-bottom: 1.5rem;
+                transform: perspective(1000px) translateZ(20px) rotateY(5deg);
+                transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                opacity: 0;
+                transform-origin: center left;
+                border: 1px solid rgba(255, 125, 0, 0.1);
+                box-shadow: 0 4px 20px rgba(255, 125, 0, 0.05);
+            }
+            .masonry-item.visible {
+                opacity: 1;
+                transform: perspective(1000px) translateZ(0) rotateY(0);
+            }
+            /* 3D悬停效果增强 */
+            .card-hover {
+                transition: transform 0.5s ease, box-shadow 0.5s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-20px) rotateX(10deg) rotateY(5deg) scale(1.02);
+                box-shadow: 0 25px 50px rgba(255, 125, 0, 0.3), 0 0 0 1px rgba(255, 125, 0, 0.4);
+                border-color: rgba(255, 125, 0, 0.5);
+            }
+            
+            /* 3D科技感增强 */
+            .card-3d {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 125, 0, 0.2);
+                transform-style: preserve-3d;
+            }
+            
+            .neon-text {
+                text-shadow: 0 0 10px rgba(255, 125, 0, 0.8), 0 0 20px rgba(255, 125, 0, 0.6);
+                animation: neon-pulse 2s ease-in-out infinite alternate;
+            }
+            
+            @keyframes neon-pulse {
+                from { text-shadow: 0 0 10px rgba(255, 125, 0, 0.8); }
+                to { text-shadow: 0 0 20px rgba(255, 125, 0, 1); }
+            }
+        </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF7D00',
+                        secondary: '#FF9500',
+                        dark: '#1E293B',
+                        light: '#F8FAFC',
+                        'primary-light': '#E6F7FF',
+                        'primary-dark': '#E65C00'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                },
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+                overflow: hidden;
+            }
+            .card-hover:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 30px rgba(255, 125, 0, 0.1);
+            }
+            .card-hover img {
+                transition: transform 0.5s ease;
+            }
+            .card-hover:hover img {
+                transform: scale(1.05);
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+            }
+            .gradient-bg {
+                background: linear-gradient(135deg, #FF7D00 0%, #E65C00 100%);
+            }
+            .nav-shadow {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            }
+            .text-glow {
+                text-shadow: 0 0 10px rgba(255, 125, 0, 0.3);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter text-dark bg-light bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyNTI1MjUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTYwIDYwaC02djZoNnoiLz48cGF0aCBkPSJNNjAgNTJoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik02MCA0MmgtNnY2aDZ6Ii8+PHBhdGggZD0iTTYwIDM0aC02djZoNnoiLz48cGF0aCBkPSJNNjAgMjZoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik02MCAxOGgtNnY2aDZ6Ii8+PHBhdGggZD0iTTYwIDEwaC02djZoNnoiLz48cGF0aCBkPSJNNDIgNjBoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik0zNCA2MGgtNnY2aDZ6Ii8+PHBhdGggZD0iTTI2IDYwaC02djZoNnoiLz48cGF0aCBkPSJNMTggNjBoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik0xMCA2MGgtNnY2aDZ6Ii8+PHBhdGggZD0iTTQyIDUyaC02djZoNnoiLz48cGF0aCBkPSJNNDIgNDJoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik00MiAzNGgtNnY2aDZ6Ii8+PHBhdGggZD0iTTQyIDI2aC02djZoNnoiLz48cGF0aCBkPSJNNDIgMThoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik00MiAxMGgtNnY2aDZ6Ii8+PHBhdGggZD0iTTM0IDUyaC02djZoNnoiLz48cGF0aCBkPSJNNDIgNTJoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik0zNCA0MmgtNnY2aDZ6Ii8+PHBhdGggZD0iTTI2IDUySDEwdjZoMTZ6Ii8+PHBhdGggZD0iTTI2IDQyaC02djZoNnoiLz48cGF0aCBkPSJNMjYgMzRoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik0yNiAyNmgtNnY2aDZ6Ii8+PHBhdGggZD0iTTI2IDE4aC02djZoNnoiLz48cGF0aCBkPSJNMjYgMTBoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik0xOCA1MmgtNnY2aDZ6Ii8+PHBhdGggZD0iTTEwIDUySDR2Nmg2eiIvPjxwYXRoIGQ9Ik0xOCA0MmgtNnY2aDZ6Ii8+PHBhdGggZD0iTTEwIDQyaC02djZoNnoiLz48cGF0aCBkPSJNMTggMzRoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik0xMCAzNGgtNnY2aDZ6Ii8+PHBhdGggZD0iTTE4IDI2aC02djZoNnoiLz48cGF0aCBkPSJNMTAgMjZoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik0xOCAxOGgtNnY2aDZ6Ii8+PHBhdGggZD0iTTEwIDE4aC02djZoNnoiLz48cGF0aCBkPSJNMTggMTBoLTZ2Nmg2eiIvPjxwYXRoIGQ9Ik0xMCAxMGgtNnY2aDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')]">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent card-3d">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center space-x-2">
+                    <img src="img/logo-color3.png" alt="WCKJ Logo" class="w-12 h-12 object-contain">
+                    <span class="text-xl font-bold text-white neon-text" data-i18n="上海葳澄信息科技有限公司">上海<span class="text-primary">葳澄信息科技有限公司</span></span>
+                </a>
+                
+                <!-- 桌面导航 -->
+                <div class="flex items-center space-x-4 mr-4">
+                        <div class="relative">
+                            <button id="lang-toggle" class="bg-white text-primary border border-primary px-3 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition-colors flex items-center gap-1">
+                                <span>中文</span>
+                                <i class="fa fa-chevron-down text-xs"></i>
+                            </button>
+                            <div id="lang-dropdown" class="absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg hidden z-50">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white" data-lang="zh">中文 (Chinese)</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white" data-lang="en">English (英文)</a>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-dark hover:text-primary transition-colors font-medium" data-i18n="首页">首页</a>
+                    <a href="#services" class="text-dark hover:text-primary transition-colors font-medium" data-i18n="服务">服务</a>
+                    <a href="#cases" class="text-dark hover:text-primary transition-colors font-medium" data-i18n="案例">案例</a>
+                    <a href="#about" class="text-dark hover:text-primary transition-colors font-medium" data-i18n="关于我们">关于我们</a>
+                    <a href="#contact" class="text-dark hover:text-primary transition-colors font-medium" data-i18n="联系我们">联系我们</a>
+                </nav>
+                
+                <!-- 联系按钮 -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-lg hover:shadow-xl hover:shadow-primary/20" data-i18n="咨询方案">
+                        咨询方案
+                    </a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-dark focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg rounded-b-xl mx-4 overflow-hidden transition-all duration-300 max-h-0">
+            <div class="px-4 py-2 space-y-3">
+                <a href="#home" class="block py-2 text-dark hover:text-primary transition-colors" data-i18n="首页">首页</a>
+                <a href="#services" class="block py-2 text-dark hover:text-primary transition-colors" data-i18n="服务">服务</a>
+                <a href="#cases" class="block py-2 text-dark hover:text-primary transition-colors" data-i18n="案例">案例</a>
+                <a href="#about" class="block py-2 text-dark hover:text-primary transition-colors" data-i18n="关于我们">关于我们</a>
+                <a href="#contact" class="block py-2 text-dark hover:text-primary transition-colors" data-i18n="联系我们">联系我们</a>
+                <a href="#contact" class="block py-2.5 mt-3 bg-primary hover:bg-primary-dark text-white px-6 rounded-full font-medium text-center" data-i18n="咨询方案">咨询方案</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 英雄区 -->
+        <section id="home" class="pt-28 pb-20 md:pt-36 md:pb-32 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-primary/5 to-primary/10 -z-10"></div>
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent -z-10"></div>
+            
+            <!-- 装饰元素 -->
+            <div class="absolute top-1/4 right-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div><div class="absolute top-2/3 left-1/3 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-1/3 left-1/4 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"></div>
+            
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2 space-y-6">
+                        <span class="inline-block px-4 py-2 rounded-full bg-orange-50 text-primary font-medium text-sm">
+                            <span data-i18n="人工智能解决方案专家">人工智能解决方案专家</span>
+                        </span>
+                            <span data-i18n="用人工智能驱动业务增长">用<span class="text-primary animate-pulse" style="text-shadow: 0 0 20px rgba(255, 125, 0, 0.8); font-size: 1.2em; font-weight: 900; color: #FF7D00;">人工智能</span>驱动业务增长</span>
+                        </h1>
+                        <p class="text-gray-600 text-lg md:text-xl max-w-xl" data-i18n="我们提供前沿的AI解决方案">我们提供前沿的AI解决方案，帮助企业实现数字化转型，提升效率，创造全新业务机会。</p>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <a href="#contact" class="bg-primary hover:bg-primary-dark text-white px-8 py-3.5 rounded-full font-medium transition-all shadow-lg hover:shadow-xl hover:shadow-primary/20 text-center">
+                                <span data-i18n="了解我们的服务">了解我们的服务</span>
+                            </a>
+                            <a href="#cases" class="bg-white hover:bg-gray-50 text-primary border border-primary px-8 py-3.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg text-center flex items-center justify-center gap-2">
+                                <i class="fa fa-play-circle-o"></i> <span data-i18n="查看成功案例">查看成功案例</span>
+                            </a>
+                        </div>
+                        
+                        <div class="flex items-center gap-6 pt-8">
+                            <div class="flex -space-x-2">
+                                <img src="https://picsum.photos/id/1001/100/100" alt="Customer Avatar" class="w-10 h-10 rounded-full border-2 border-white">
+                                <img src="https://picsum.photos/id/1002/100/100" alt="Customer Avatar" class="w-10 h-10 rounded-full border-2 border-white">
+                                <img src="https://picsum.photos/id/1003/100/100" alt="Customer Avatar" class="w-10 h-10 rounded-full border-2 border-white">
+                                <img src="https://picsum.photos/id/1004/100/100" alt="Customer Avatar" class="w-10 h-10 rounded-full border-2 border-white">
+                                <div class="w-10 h-10 rounded-full border-2 border-white bg-primary-light flex items-center justify-center text-primary text-xs font-medium">
+                                    50+
+                                </div>
+                            </div>
+                            <div class="text-sm">
+                                <div class="flex items-center gap-1 text-yellow-400">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <p class="text-gray-600" data-i18n="来自50+企业客户的信任">来自50+企业客户的信任</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2 relative">
+                        <div class="relative z-10 animate-float">
+                            <img src="https://picsum.photos/id/180/800/600" alt="AI Solutions Showcase" class="rounded-2xl shadow-2xl">
+                            <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
+                                    <i class="fa fa-line-chart text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 text-sm" data-i18n="业务增长">业务增长</p>
+                                    <p class="font-bold text-xl">+215%</p>
+                                </div>
+                            </div>
+                            <div class="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-lg flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                                    <i class="fa fa-bolt text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 text-sm" data-i18n="效率提升">效率提升</p>
+                                    <p class="font-bold text-xl">+187%</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 装饰图形 -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border-2 border-primary/20 rounded-3xl -z-10 rotate-3"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border-2 border-primary/10 rounded-3xl -z-10 -rotate-3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 信任标志 -->
+        <section class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-gray-500 mb-8" data-i18n="受到行业领先企业的信任">受到行业领先企业的信任</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60">
+                    <img src="https://picsum.photos/id/0/200/80" alt="Partner Logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                    <img src="https://picsum.photos/id/1/200/80" alt="Partner Logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                    <img src="https://picsum.photos/id/2/200/80" alt="Partner Logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                    <img src="https://picsum.photos/id/3/200/80" alt="Partner Logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                    <img src="https://picsum.photos/id/4/200/80" alt="Partner Logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                    <img src="https://picsum.photos/id/5/200/80" alt="Partner Logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                </div>
+            </div>
+        </section>
+        
+        <!-- 服务展示 -->
+        <section id="services" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-block px-4 py-2 rounded-full bg-primary-light text-primary font-medium text-sm mb-4" data-i18n="我们的服务">
+                        我们的服务
+                    </span>
+                    <h2 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-6 text-glow" data-i18n="全方位AI解决方案">全方位AI解决方案</h2>
+                    <p class="text-gray-600 text-lg" data-i18n="我们提供从咨询、开发到部署的全周期AI服务">我们提供从咨询、开发到部署的全周期AI服务，帮助企业快速实现AI价值。</p>
+                </div>
+                
+                <div class="masonry-grid">
+                    <!-- 服务卡片1 -->
+                    <div class="card-3d rounded-2xl shadow-lg p-8 card-hover border border-gray-100">
+                        <div class="w-16 h-16 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 mb-6">
+                            <i class="fa fa-comments text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4" data-i18n="智能客服系统">智能客服系统</h3>
+                        <p class="text-gray-600 mb-6" data-i18n="基于深度学习的智能客服解决方案">基于深度学习的智能客服解决方案，提供7×24小时不间断服务，提升客户体验和满意度。</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="自然语言处理技术">自然语言处理技术</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="多轮对话能力">多轮对话能力</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="自动学习优化">自动学习优化</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                            <span data-i18n="了解更多">了解更多</span> <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 服务卡片2 -->
+                    <div class="card-3d rounded-2xl shadow-lg p-8 card-hover border border-gray-100">
+                        <div class="w-16 h-16 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 mb-6">
+                            <i class="fa fa-bar-chart text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4" data-i18n="预测分析平台">预测分析平台</h3>
+                        <p class="text-gray-600 mb-6" data-i18n="基于历史数据构建预测模型">基于历史数据构建预测模型，帮助企业提前洞察市场趋势，优化业务决策流程。</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="时间序列分析">时间序列分析</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="机器学习预测">机器学习预测</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="实时数据处理">实时数据处理</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                            <span data-i18n="了解更多">了解更多</span> <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 服务卡片3 -->
+                    <div class="card-3d rounded-2xl shadow-lg p-8 card-hover border border-gray-100">
+                        <div class="w-16 h-16 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 mb-6">
+                            <i class="fa fa-eye text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4" data-i18n="计算机视觉解决方案">计算机视觉解决方案</h3>
+                        <p class="text-gray-600 mb-6" data-i18n="基于深度学习的图像和视频分析技术">基于深度学习的图像和视频分析技术，为企业提供自动化视觉检测和识别能力。</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="物体检测与识别">物体检测与识别</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="图像分类">图像分类</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="视频监控分析">视频监控分析</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                            <span data-i18n="了解更多">了解更多</span> <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 服务卡片4 -->
+                    <div class="card-3d rounded-2xl shadow-lg p-8 card-hover border border-gray-100">
+                        <div class="w-16 h-16 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 mb-6">
+                            <i class="fa fa-cogs text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4" data-i18n="智能流程自动化">智能流程自动化</h3>
+                        <p class="text-gray-600 mb-6" data-i18n="结合RPA和AI技术">结合RPA和AI技术，实现业务流程的自动化，提高工作效率，降低人力成本。</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="流程识别与优化">流程识别与优化</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="智能表单处理">智能表单处理</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="自动化决策支持">自动化决策支持</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                            <span data-i18n="了解更多">了解更多</span> <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 服务卡片5 -->
+                    <div class="card-3d rounded-2xl shadow-lg p-8 card-hover border border-gray-100">
+                        <div class="w-16 h-16 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 mb-6">
+                            <i class="fa fa-shield text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4" data-i18n="AI安全解决方案">AI安全解决方案</h3>
+                        <p class="text-gray-600 mb-6" data-i18n="利用人工智能技术提升企业安全防护能力">利用人工智能技术提升企业安全防护能力，实时监测和响应各类安全威胁。</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="异常行为检测">异常行为检测</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="安全事件预测">安全事件预测</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="智能威胁响应">智能威胁响应</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                            <span data-i18n="了解更多">了解更多</span> <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 服务卡片6 -->
+                    <div class="card-3d rounded-2xl shadow-lg p-8 card-hover border border-gray-100">
+                        <div class="w-16 h-16 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 mb-6">
+                            <i class="fa fa-cloud text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4" data-i18n="AI云平台服务">AI云平台服务</h3>
+                        <p class="text-gray-600 mb-6" data-i18n="提供灵活可扩展的AI基础设施服务">提供灵活可扩展的AI基础设施服务，支持企业快速部署和管理AI应用。</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="模型训练与部署">模型训练与部署</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="资源弹性伸缩">资源弹性伸缩</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa fa-check text-green-500 mt-1"></i>
+                                <span data-i18n="多环境支持">多环境支持</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                            <span data-i18n="了解更多">了解更多</span> <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 数据分析展示 -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                        <span class="inline-block px-4 py-2 rounded-full bg-primary-light text-primary font-medium text-sm mb-4">
+                            <span data-i18n="数据驱动决策">数据驱动决策</span>
+                        </span>
+                        <h2 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-6" data-i18n="AI如何提升业务表现">AI如何提升业务表现</h2>
+                        <p class="text-gray-600 text-lg mb-8" data-i18n="我们的AI解决方案已帮助众多企业实现了显著的业务提升">我们的AI解决方案已帮助众多企业实现了显著的业务提升，通过数据分析和智能预测，为企业创造更大价值。</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fa fa-line-chart text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2" data-i18n="收入增长">收入增长</h3>
+                                    <p class="text-gray-600" data-i18n="我们的AI预测模型帮助客户平均提升27%的销售额">我们的AI预测模型帮助客户平均提升27%的销售额，通过精准的市场分析和客户洞察，发掘新的业务机会。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
+                                    <i class="fa fa-users text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2" data-i18n="客户满意度">客户满意度</h3>
+                                    <p class="text-gray-600" data-i18n="智能客服系统帮助客户将满意度提升35%">智能客服系统帮助客户将满意度提升了35%，同时降低了40%的服务成本，实现了服务质量和效率的双重提升。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
+                                    <i class="fa fa-clock-o text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2" data-i18n="运营效率">运营效率</h3>
+                                    <p class="text-gray-600" data-i18n="流程自动化解决方案帮助企业将重复性工作效率提升65%">流程自动化解决方案帮助企业将重复性工作效率提升了65%，员工可以将更多时间投入到高价值的创造性工作中。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl">
+                            <canvas id="performanceChart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 案例研究 -->
+        <section id="cases" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-block px-4 py-2 rounded-full bg-primary-light text-primary font-medium text-sm mb-4" data-i18n="成功案例">
+                        成功案例
+                    </span>
+                    <h2 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-6" data-i18n="行业领先的AI应用案例">行业领先的AI应用案例</h2>
+                    <p class="text-gray-600 text-lg" data-i18n="探索我们如何帮助不同行业的客户利用AI技术实现业务突破和创新">探索我们如何帮助不同行业的客户利用AI技术实现业务突破和创新。</p>
+                </div>
+                
+                <div class="masonry-grid">
+                    <!-- 案例卡片1 -->
+                    <div class="masonry-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/20/600/400" alt="金融服务AI案例" class="w-full h-64 object-cover">
+                            <div class="absolute top-4 left-4 bg-primary text-white text-sm font-medium px-3 py-1 rounded-full">
+                                <span data-i18n="金融服务">金融服务</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3" data-i18n="智能风控系统">智能风控系统</h3>
+                            <p class="text-gray-600 mb-4" data-i18n="为某大型银行开发的AI风控系统，通过机器学习模型实时分析交易数据，识别潜在风险，欺诈检测准确率提升92%。">为某大型银行开发的AI风控系统，通过机器学习模型实时分析交易数据，识别潜在风险，欺诈检测准确率提升92%。</p>
+                            <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                                <span class="flex items-center gap-1"><i class="fa fa-users"></i> <span data-i18n="150万+用户">150万+用户</span></span>
+                                <span class="mx-2">•</span>
+                                <span class="flex items-center gap-1"><i class="fa fa-calendar"></i> <span data-i18n="2024年">2024年</span></span>
+                            </div>
+                            <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                                <span data-i18n="查看详情">查看详情</span> <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 案例卡片2 -->
+                    <div class="masonry-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/26/600/400" alt="医疗健康AI案例" class="w-full h-64 object-cover">
+                            <div class="absolute top-4 left-4 bg-green-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+                                <span data-i18n="医疗健康">医疗健康</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3" data-i18n="医学影像诊断助手">医学影像诊断助手</h3>
+                            <p class="text-gray-600 mb-4" data-i18n="与医疗机构合作开发的AI辅助诊断系统，帮助医生快速分析X光和CT影像，肺部结节检测准确率达到97%，诊断时间缩短60%。">与医疗机构合作开发的AI辅助诊断系统，帮助医生快速分析X光和CT影像，肺部结节检测准确率达到97%，诊断时间缩短60%。</p>
+                            <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                                <span class="flex items-center gap-1"><i class="fa fa-hospital-o"></i> <span data-i18n="30+医院">30+医院</span></span>
+                                <span class="mx-2">•</span>
+                                <span class="flex items-center gap-1"><i class="fa fa-calendar"></i> <span data-i18n="2025年">2025年</span></span>
+                            </div>
+                            <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                                <span data-i18n="查看详情">查看详情</span> <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 案例卡片3 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/42/600/400" alt="零售电商AI案例" class="w-full h-64 object-cover">
+                            <div class="absolute top-4 left-4 bg-secondary text-white text-sm font-medium px-3 py-1 rounded-full">
+                                <span data-i18n="零售电商">零售电商</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3" data-i18n="个性化推荐引擎">个性化推荐引擎</h3>
+                            <p class="text-gray-600 mb-4" data-i18n="为某知名电商平台构建的AI推荐系统，基于用户行为数据提供个性化商品推荐，点击率提升45%，平均订单价值增长28%。">为某知名电商平台构建的AI推荐系统，基于用户行为数据提供个性化商品推荐，点击率提升45%，平均订单价值增长28%。</p>
+                            <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                                <span class="flex items-center gap-1"><i class="fa fa-shopping-cart"></i> <span data-i18n="500万+SKU">500万+SKU</span></span>
+                                <span class="mx-2">•</span>
+                                <span class="flex items-center gap-1"><i class="fa fa-calendar"></i> <span data-i18n="2024年">2024年</span></span>
+                            </div>
+                            <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                                <span data-i18n="查看详情">查看详情</span> <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                <!-- 案例卡片4 -->
+                <div class="masonry-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/96/600/400" alt="制造业AI案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4 bg-purple-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+                            <span data-i18n="制造业">制造业</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3" data-i18n="智能生产优化系统">智能生产优化系统</h3>
+                        <p class="text-gray-600 mb-4" data-i18n="为汽车制造企业开发的AI生产优化平台，通过实时分析生产数据预测设备故障，减少停机时间38%，生产效率提升25%。">为汽车制造企业开发的AI生产优化平台，通过实时分析生产数据预测设备故障，减少停机时间38%，生产效率提升25%。</p>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                            <span class="flex items-center gap-1"><i class="fa fa-industry"></i> <span data-i18n="5家工厂">5家工厂</span></span>
+                            <span class="mx-2">•</span>
+                            <span class="flex items-center gap-1"><i class="fa fa-calendar"></i> <span data-i18n="2024年">2024年</span></span>
+                        </div>
+                        <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                            <span data-i18n="查看详情">查看详情</span> <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 案例卡片5 -->
+                <div class="masonry-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/201/600/400" alt="教育科技AI案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+                            <span data-i18n="教育科技">教育科技</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3" data-i18n="个性化学习平台">个性化学习平台</h3>
+                        <p class="text-gray-600 mb-4" data-i18n="为在线教育机构打造的AI学习系统，根据学生学习行为提供定制化学习路径，学习效率提升42%，知识留存率提高35%。">为在线教育机构打造的AI学习系统，根据学生学习行为提供定制化学习路径，学习效率提升42%，知识留存率提高35%。</p>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                            <span class="flex items-center gap-1"><i class="fa fa-graduation-cap"></i> <span data-i18n="20万+学生">20万+学生</span></span>
+                            <span class="mx-2">•</span>
+                            <span class="flex items-center gap-1"><i class="fa fa-calendar"></i> <span data-i18n="2025年">2025年</span></span>
+                        </div>
+                        <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                            <span data-i18n="查看详情">查看详情</span> <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 案例卡片6 -->
+                <div class="masonry-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/119/600/400" alt="物流运输AI案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4 bg-teal-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+                            <span data-i18n="物流运输">物流运输</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3" data-i18n="智能路径规划系统">智能路径规划系统</h3>
+                        <p class="text-gray-600 mb-4" data-i18n="为物流企业开发的AI路径优化系统，结合实时交通数据和天气情况动态调整配送路线，运输成本降低22%，准时率提升至98%。">为物流企业开发的AI路径优化系统，结合实时交通数据和天气情况动态调整配送路线，运输成本降低22%，准时率提升至98%。</p>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                            <span class="flex items-center gap-1"><i class="fa fa-truck"></i> <span data-i18n="500+车辆">500+车辆</span></span>
+                            <span class="mx-2">•</span>
+                            <span class="flex items-center gap-1"><i class="fa fa-calendar"></i> <span data-i18n="2024年">2024年</span></span>
+                        </div>
+                        <a href="#contact" class="text-primary hover:text-primary-dark font-medium inline-flex items-center gap-2">
+                            <span data-i18n="查看详情">查看详情</span> <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="#contact" class="inline-block bg-white hover:bg-gray-50 text-primary border border-primary px-8 py-3.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg">
+                        <span data-i18n="查看更多案例">查看更多案例</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 客户评价 -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-block px-4 py-2 rounded-full bg-primary-light text-primary font-medium text-sm mb-4">
+                        <span data-i18n="客户反馈">客户反馈</span>
+                    </span>
+                    <h2 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-6" data-i18n="客户如何评价我们的服务">客户如何评价我们的服务</h2>
+                    <p class="text-gray-600 text-lg" data-i18n="来自各行各业客户的真实评价">来自各行各业客户的真实评价，见证我们AI解决方案的实际效果。</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 评价卡片1 -->
+                    <div class="masonry-item bg-white p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="https://picsum.photos/id/1012/100/100" alt="客户头像" class="w-14 h-14 rounded-full">
+                            <div>
+                                <h4 class="font-bold text-lg" data-i18n="李明">李明</h4>
+                                <p class="text-gray-500" data-i18n="技术总监，某金融科技公司">技术总监，某金融科技公司</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic" data-i18n="WCKJ提供的智能风控系统彻底改变了我们的业务模式">"WCKJ提供的智能风控系统彻底改变了我们的业务模式，不仅大幅提升了风险识别准确率，还显著降低了运营成本。他们的专业团队提供了全程支持，确保了系统的顺利实施和优化。"</p>
+                    </div>
+                    
+                    <!-- 评价卡片2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="https://picsum.photos/id/1027/100/100" alt="客户头像" class="w-14 h-14 rounded-full">
+                            <div>
+                                <h4 class="font-bold text-lg" data-i18n="张华">张华</h4>
+                                <p class="text-gray-500" data-i18n="CEO，某医疗设备公司">CEO，某医疗设备公司</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                        <p class="text-gray-600 italic" data-i18n="与WCKJ合作开发的医学影像诊断助手">"与WCKJ合作开发的医学影像诊断助手是我们产品线的重要突破。该系统的准确率令人印象深刻，帮助我们的医生更快速、更准确地做出诊断，大大提高了患者的治疗效果。"</p>
+                    </div>
+                    
+                    <!-- 评价卡片3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="https://picsum.photos/id/1025/100/100" alt="客户头像" class="w-14 h-14 rounded-full">
+                            <div>
+                                <h4 class="font-bold text-lg" data-i18n="王芳">王芳</h4>
+                                <p class="text-gray-500" data-i18n="营销总监，某电商平台">营销总监，某电商平台</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic" data-i18n="个性化推荐引擎的实施是我们近年来最成功的技术投资">"个性化推荐引擎的实施是我们近年来最成功的技术投资之一。WCKJ团队深入了解我们的业务需求，定制开发的解决方案不仅提高了转化率，还显著提升了用户体验。我们的客户满意度和收入都有了明显增长。"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 关于我们 -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                        <span class="inline-block px-4 py-2 rounded-full bg-primary-light text-primary font-medium text-sm mb-4">
+                            <span data-i18n="关于我们">关于我们</span>
+                        </span>
+                        <h2 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-6" data-i18n="领先的AI解决方案提供商">领先的AI解决方案提供商</h2>
+                        <p class="text-gray-600 text-lg mb-6" data-i18n="WCKJ成立于2018年">WCKJ成立于2018年，是一家专注于人工智能技术研发和应用的高科技企业。我们拥有一支由博士、硕士组成的专业研发团队，致力于为企业提供创新、高效的AI解决方案。</p>
+                        
+                        <div class="grid grid-cols-2 gap-6 mb-8">
+                            <div class="bg-gray-50 p-6 rounded-xl transform transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/10">
+                                <div class="text-4xl font-bold text-primary mb-2">50+</div>
+                                <p class="text-gray-600" data-i18n="企业客户">企业客户</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-xl">
+                                <div class="text-4xl font-bold text-primary mb-2">120+</div>
+                                <p class="text-gray-600" data-i18n="AI专家">AI专家</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-xl">
+                                <div class="text-4xl font-bold text-primary mb-2">78</div>
+                                <p class="text-gray-600" data-i18n="成功项目">成功项目</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-xl">
+                                <div class="text-4xl font-bold text-primary mb-2">15</div>
+                                <p class="text-gray-600" data-i18n="技术专利">技术专利</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="inline-block bg-primary hover:bg-primary-dark text-white px-8 py-3.5 rounded-full font-medium transition-all shadow-lg hover:shadow-xl hover:shadow-primary/20">
+                            <span data-i18n="了解更多">了解更多</span>
+                        </a>
+                    </div>
+                    
+                    <div class="lg:w-1/2">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-4">
+                                <img src="https://picsum.photos/id/1005/400/500" alt="Team Photo" class="rounded-xl shadow-lg w-full h-64 object-cover">
+                                <img src="https://picsum.photos/id/1006/400/300" alt="Team Photo" class="rounded-xl shadow-lg w-full h-40 object-cover">
+                            </div>
+                            <div class="space-y-4 mt-8">
+                                <img src="https://picsum.photos/id/1009/400/300" alt="Team Photo" class="rounded-xl shadow-lg w-full h-40 object-cover">
+                                <img src="https://picsum.photos/id/1011/400/500" alt="Team Photo" class="rounded-xl shadow-lg w-full h-64 object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 团队展示 -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-block px-4 py-2 rounded-full bg-primary-light text-primary font-medium text-sm mb-4" data-i18n="核心团队">
+                        核心团队
+                    </span>
+                    <h2 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-6 text-glow" data-i18n="专业的AI研发团队">专业的AI研发团队</h2>
+                    <p class="text-gray-600 text-lg" data-i18n="打造全人工智能服务的一人公司">打造全人工智能服务的一人公司，通过AI agent提供专业的技术服务和解决方案。</p>
+                </div>
+                
+                <div class="masonry-grid">
+                    <!-- AI Agent 1 -->
+                    <div class="card-3d rounded-2xl shadow-lg overflow-hidden card-hover">
+                        <div class="w-full h-64 bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center">
+                            <i class="fa fa-robot text-6xl text-primary"></i>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-1" data-i18n="技术研发Agent">技术研发Agent</h3>
+                            <p class="text-primary mb-4" data-i18n="AI解决方案专家">AI解决方案专家</p>
+                            <p class="text-gray-600 text-sm mb-4" data-i18n="专注于深度学习和机器学习算法研发">专注于深度学习和机器学习算法研发，具备完整的AI项目开发和部署能力。</p>
+                            <div class="flex justify-center gap-4">
+                                <span class="text-gray-400">
+                                    <i class="fa fa-cogs"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-code"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-brain"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Agent 2 -->
+                    <div class="card-3d rounded-2xl shadow-lg overflow-hidden card-hover">
+                        <div class="w-full h-64 bg-gradient-to-br from-blue-100 to-blue-300 flex items-center justify-center">
+                            <i class="fa fa-comments text-6xl text-blue-600"></i>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-1" data-i18n="客服咨询Agent">客服咨询Agent</h3>
+                            <p class="text-primary mb-4" data-i18n="智能对话专家">智能对话专家</p>
+                            <p class="text-gray-600 text-sm mb-4" data-i18n="专业的自然语言处理能力">专业的自然语言处理能力，提供7×24小时智能客服和业务咨询服务。</p>
+                            <div class="flex justify-center gap-4">
+                                <span class="text-gray-400">
+                                    <i class="fa fa-comment"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-language"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-clock-o"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Agent 3 -->
+                    <div class="card-3d rounded-2xl shadow-lg overflow-hidden card-hover">
+                        <div class="w-full h-64 bg-gradient-to-br from-green-100 to-green-300 flex items-center justify-center">
+                            <i class="fa fa-tasks text-6xl text-green-600"></i>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-1" data-i18n="项目管理Agent">项目管理Agent</h3>
+                            <p class="text-primary mb-4" data-i18n="智能项目助手">智能项目助手</p>
+                            <p class="text-gray-600 text-sm mb-4" data-i18n="自动化项目管理和进度跟踪">自动化项目管理和进度跟踪，确保AI项目按时高质量交付。</p>
+                            <div class="flex justify-center gap-4">
+                                <span class="text-gray-400">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-check-circle"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-bar-chart"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Agent 4 -->
+                    <div class="card-3d rounded-2xl shadow-lg overflow-hidden card-hover">
+                        <div class="w-full h-64 bg-gradient-to-br from-purple-100 to-purple-300 flex items-center justify-center">
+                            <i class="fa fa-line-chart text-6xl text-purple-600"></i>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-1" data-i18n="商业分析Agent">商业分析Agent</h3>
+                            <p class="text-primary mb-4" data-i18n="智能商业顾问">智能商业顾问</p>
+                            <p class="text-gray-600 text-sm mb-4" data-i18n="数据驱动的商业洞察和决策支持">数据驱动的商业洞察和决策支持，将AI技术转化为实际商业价值。</p>
+                            <div class="flex justify-center gap-4">
+                                <span class="text-gray-400">
+                                    <i class="fa fa-lightbulb-o"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-pie-chart"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-trophy"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Agent 5 -->
+                    <div class="card-3d rounded-2xl shadow-lg overflow-hidden card-hover">
+                        <div class="w-full h-64 bg-gradient-to-br from-red-100 to-red-300 flex items-center justify-center">
+                            <i class="fa fa-shield text-6xl text-red-600"></i>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-1" data-i18n="安全监控Agent">安全监控Agent</h3>
+                            <p class="text-primary mb-4" data-i18n="智能安全专家">智能安全专家</p>
+                            <p class="text-gray-600 text-sm mb-4" data-i18n="实时监控系统安全状态">实时监控系统安全状态，自动检测威胁和异常行为，提供智能安全防护。</p>
+                            <div class="flex justify-center gap-4">
+                                <span class="text-gray-400">
+                                    <i class="fa fa-eye"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-warning"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Agent 6 -->
+                    <div class="card-3d rounded-2xl shadow-lg overflow-hidden card-hover">
+                        <div class="w-full h-64 bg-gradient-to-br from-yellow-100 to-yellow-300 flex items-center justify-center">
+                            <i class="fa fa-graduation-cap text-6xl text-yellow-600"></i>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-1" data-i18n="学习优化Agent">学习优化Agent</h3>
+                            <p class="text-primary mb-4" data-i18n="智能学习助手">智能学习助手</p>
+                            <p class="text-gray-600 text-sm mb-4" data-i18n="持续学习和优化AI模型">持续学习和优化AI模型，自动调整算法参数，提升系统性能。</p>
+                            <div class="flex justify-center gap-4">
+                                <span class="text-gray-400">
+                                    <i class="fa fa-refresh"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-tachometer"></i>
+                                </span>
+                                <span class="text-gray-400">
+                                    <i class="fa fa-rocket"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 联系我们 -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="lg:w-1/2">
+                        <span class="inline-block px-4 py-2 rounded-full bg-primary-light text-primary font-medium text-sm mb-4">
+                            <span data-i18n="联系我们">联系我们</span>
+                        </span>
+                        <h2 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-6" data-i18n="让我们一起探讨AI如何助力你的业务">让我们一起探讨AI如何助力你的业务</h2>
+                        <p class="text-gray-600 text-lg mb-8" data-i18n="填写下方表单">填写下方表单，我们的专业团队将在24小时内与你联系，为你提供定制化的AI解决方案。</p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fa fa-map-marker text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1" data-i18n="总部地址">总部地址</h3>
+                                    <p class="text-gray-600" data-i18n="上海市静安区共和新路4718弄10号1楼">上海市静安区共和新路4718弄10号1楼</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fa fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1" data-i18n="联系电话">联系电话</h3>
+                                    <p class="text-gray-600">18964673689</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fa fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1" data-i18n="电子邮箱">电子邮箱</h3>
+                                    <p class="text-gray-600">jyu@wisdomitc.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fa fa-weixin"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2">
+                        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+                            <h3 class="text-2xl font-bold mb-6" data-i18n="发送咨询">发送咨询</h3>
+                            <form>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <label for="name" class="block text-gray-700 font-medium mb-2" data-i18n="姓名">姓名</label>
+                                        <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all hover:border-primary/50" placeholder="请输入您的姓名" data-i18n-placeholder="请输入您的姓名">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-gray-700 font-medium mb-2" data-i18n="电话">电话</label>
+                                        <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="请输入您的电话" data-i18n-placeholder="请输入您的电话">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="email" class="block text-gray-700 font-medium mb-2" data-i18n="电子邮箱">电子邮箱</label>
+                                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="请输入您的电子邮箱" data-i18n-placeholder="请输入您的电子邮箱">
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="service" class="block text-gray-700 font-medium mb-2" data-i18n="感兴趣的服务">感兴趣的服务</label>
+                                    <select id="service" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                                        <option value="" data-i18n="请选择服务类型">请选择服务类型</option>
+                                        <option value="chatbot" data-i18n="智能客服系统">智能客服系统</option>
+                                        <option value="analytics" data-i18n="预测分析平台">预测分析平台</option>
+                                        <option value="vision" data-i18n="计算机视觉解决方案">计算机视觉解决方案</option>
+                                        <option value="automation" data-i18n="智能流程自动化">智能流程自动化</option>
+                                        <option value="security" data-i18n="AI安全解决方案">AI安全解决方案</option>
+                                        <option value="cloud" data-i18n="AI云平台服务">AI云平台服务</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="message" class="block text-gray-700 font-medium mb-2" data-i18n="咨询内容">咨询内容</label>
+                                    <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="请详细描述您的需求..." data-i18n-placeholder="请详细描述您的需求"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white px-6 py-3.5 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl hover:shadow-primary/20" data-i18n="提交咨询">
+                                    提交咨询
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 订阅区域 -->
+        <section class="py-16 bg-primary">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-white mb-6 text-glow" data-i18n="订阅我们的AI技术动态">订阅我们的AI技术动态</h2>
+                    <p class="text-white/80 text-lg mb-8" data-i18n="获取最新的AI行业资讯">获取最新的AI行业资讯、技术发展趋势和解决方案案例，帮助您的企业在AI时代保持领先。</p>
+                    
+                    <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                        <input type="email" placeholder="请输入您的电子邮箱" data-i18n-placeholder="请输入您的电子邮箱" class="flex-grow px-6 py-3.5 rounded-lg outline-none focus:ring-2 focus:ring-white/30">
+                        <button type="submit" class="bg-white text-primary hover:bg-gray-100 px-6 py-3.5 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl whitespace-nowrap transform hover:scale-105" data-i18n="立即订阅">
+                            立即订阅
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="#" class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center">
+                            <i class="fa fa-brain text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">上海<span class="text-primary">葳澄信息科技有限公司</span></span>
+                    </a>
+                    <p class="text-gray-400 mb-6" data-i18n="我们致力于为企业提供最前沿的人工智能解决方案">我们致力于为企业提供最前沿的人工智能解决方案，帮助企业实现数字化转型，提升核心竞争力。</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6" data-i18n="服务">服务</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="智能客服系统">智能客服系统</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="预测分析平台">预测分析平台</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="计算机视觉解决方案">计算机视觉解决方案</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="智能流程自动化">智能流程自动化</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="AI安全解决方案">AI安全解决方案</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="AI云平台服务">AI云平台服务</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6" data-i18n="关于我们">关于我们</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="公司简介">公司简介</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="团队介绍">团队介绍</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="成功案例">成功案例</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="技术博客">技术博客</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="加入我们">加入我们</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="联系我们">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6" data-i18n="联系信息">联系信息</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-map-marker text-primary mt-1"></i>
+                            <span class="text-gray-400" data-i18n="上海市静安区共和新路4718弄10号1楼">上海市静安区共和新路4718弄10号1楼</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-phone text-primary mt-1"></i>
+                            <span class="text-gray-400" data-i18n="18964673689">18964673689</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-envelope text-primary mt-1"></i>
+                            <span class="text-gray-400" data-i18n="jyu@wisdomitc.com">jyu@wisdomitc.com</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-clock-o text-primary mt-1"></i>
+                            <span class="text-gray-400" data-i18n="周一至周五 9:00-18:00">周一至周五 9:00-18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-500 text-sm mb-4 md:mb-0">
+                    <p data-i18n="© 2025 上海葳澄信息科技有限公司. 保留所有权利。">© 2025 上海葳澄信息科技有限公司. 保留所有权利。</p>
+                    <p class="mt-1">沪ICP备19026127号-1</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors" data-i18n="隐私政策">隐私政策</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors" data-i18n="服务条款">服务条款</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors" data-i18n="法律声明">法律声明</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors" data-i18n="网站地图">网站地图</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 弹窗模态框 -->
+    <div id="serviceModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modalTitle" class="text-2xl font-bold">服务详情</h3>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div id="modalContent" class="text-gray-600">
+                    <!-- 动态内容 -->
+                </div>
+                <div class="mt-6 flex gap-4">
+                    <button id="consultBtn" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-medium transition-all">
+                        立即咨询
+                    </button>
+                    <button id="closeModalBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium transition-all">
+                        关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 案例详情模态框 -->
+    <div id="caseModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="caseModalTitle" class="text-2xl font-bold">案例详情</h3>
+                    <button id="closeCaseModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div id="caseModalContent" class="text-gray-600">
+                    <!-- 动态内容 -->
+                </div>
+                <div class="mt-6 flex gap-4">
+                    <button id="caseConsultBtn" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-medium transition-all">
+                        咨询类似方案
+                    </button>
+                    <button id="closeCaseModalBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium transition-all">
+                        关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成功提示 -->
+    <div id="successToast" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 hidden">
+        <div class="flex items-center gap-2">
+            <i class="fa fa-check-circle"></i>
+            <span>操作成功！</span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 自动检测系统语言
+        function detectSystemLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            return userLang.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+        }
+
+        // 应用语言设置
+        function applyLanguage(lang) {
+            const isEnglish = lang === 'en';
+            
+            // 更新按钮文本
+            const langToggle = document.getElementById('lang-toggle');
+            if (langToggle) {
+                langToggle.querySelector('span').textContent = isEnglish ? 'English' : '中文';
+            }
+            
+            // 应用翻译
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (isEnglish && translations.en[key]) {
+                    el.textContent = translations.en[key];
+                } else {
+                    el.textContent = key;
+                }
+            });
+            
+            // 翻译占位符
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (isEnglish && translations.en[key]) {
+                    el.placeholder = translations.en[key];
+                } else {
+                    el.placeholder = key;
+                }
+            });
+            
+            // 翻译select选项
+            document.querySelectorAll('option[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (isEnglish && translations.en[key]) {
+                    el.textContent = translations.en[key];
+                } else {
+                    el.textContent = key;
+                }
+            });
+            
+            // 翻译页面标题
+            const pageTitle = document.getElementById('page-title');
+            if (pageTitle) {
+                pageTitle.textContent = isEnglish ? 'WCKJ - Innovative Artificial Intelligence Solutions' : 'WCKJ - 创新人工智能解决方案';
+            }
+            
+            // 更新HTML lang属性
+            document.documentElement.lang = isEnglish ? 'en' : 'zh-CN';
+            
+            // 重新渲染图表
+            if (window.performanceChart) {
+                window.performanceChart.destroy();
+                initChart();
+            }
+        }
+
+        // 中英文切换功能
+        const translations = {
+            en: {
+                '首页': 'Home',
+                '服务': 'Services',
+                '案例': 'Cases', 
+                '关于我们': 'About Us',
+                '联系我们': 'Contact Us',
+                '咨询方案': 'Consultation',
+                '上海葳澄信息科技有限公司': 'Shanghai Weicheng Information Technology Co., Ltd.',
+                '受到行业领先企业的信任': 'Trusted by Industry Leading Companies',
+                '人工智能解决方案专家': 'AI Solution Experts',
+                '用人工智能驱动业务增长': 'Drive Business Growth with AI',
+                '我们提供前沿的AI解决方案': 'We provide cutting-edge AI solutions to help enterprises achieve digital transformation, improve efficiency, and create new business opportunities.',
+                '了解我们的服务': 'Learn About Our Services',
+                '查看成功案例': 'View Success Cases',
+                '我们的服务': 'Our Services',
+                '全方位AI解决方案': 'Comprehensive AI Solutions',
+                '我们提供从咨询、开发到部署的全周期AI服务': 'We provide full-cycle AI services from consulting, development to deployment, helping enterprises quickly realize AI value.',
+                '智能客服系统': 'Intelligent Customer Service',
+                '基于深度学习的智能客服解决方案': 'Intelligent customer service solution based on deep learning, providing 24/7 uninterrupted service to enhance customer experience and satisfaction.',
+                '自然语言处理技术': 'Natural Language Processing',
+                '多轮对话能力': 'Multi-turn Conversation',
+                '自动学习优化': 'Automatic Learning Optimization',
+                '预测分析平台': 'Predictive Analytics Platform',
+ 		'智能流程自动化': 'Intelligent Process Automation',
+                '基于历史数据构建预测模型': 'Build predictive models based on historical data to help enterprises anticipate market trends and optimize business decision processes.',
+                '时间序列分析': 'Time Series Analysis',
+                '机器学习预测': 'Machine Learning Prediction',
+                '实时数据处理': 'Real-time Data Processing',
+                '了解更多': 'Learn More',
+                '成功案例': 'Success Cases',
+                '行业领先的AI应用案例': 'Industry-Leading AI Applications',
+                '客户反馈': 'Customer Feedback',
+                '客户如何评价我们的服务': 'What Customers Say About Us',
+                '领先的AI解决方案提供商': 'Leading AI Solutions Provider',
+                '核心团队': 'Core Team',
+                '专业的AI研发团队': 'Professional AI R&D Team',
+                '打造全人工智能服务的一人公司': 'Building a one-person company with full AI services, providing professional technical services and solutions through AI agents.',
+                '技术研发Agent': 'Tech R&D Agent',
+                'AI解决方案专家': 'AI Solutions Expert',
+                '专注于深度学习和机器学习算法研发': 'Specializes in deep learning and machine learning algorithm development, with complete AI project development and deployment capabilities.',
+                '客服咨询Agent': 'Customer Service Agent',
+                '智能对话专家': 'Intelligent Dialogue Expert',
+                '专业的自然语言处理能力': 'Professional natural language processing capabilities, providing 24/7 intelligent customer service and business consultation services.',
+                '项目管理Agent': 'Project Management Agent',
+                '智能项目助手': 'Intelligent Project Assistant',
+                '自动化项目管理和进度跟踪': 'Automated project management and progress tracking, ensuring AI projects are delivered on time with high quality.',
+                '商业分析Agent': 'Business Analysis Agent',
+                '智能商业顾问': 'Intelligent Business Advisor',
+                '数据驱动的商业洞察和决策支持': 'Data-driven business insights and decision support, transforming AI technology into actual business value.',
+                '业务增长': 'Business Growth',
+                '效率提升': 'Efficiency Improvement',
+                '来自50+企业客户的信任': 'Trusted by 50+ Enterprise Clients',
+                '数据驱动决策': 'Data-Driven Decision',
+                'AI如何提升业务表现': 'How AI Improves Business Performance',
+                '我们的AI解决方案已帮助众多企业实现了显著的业务提升': 'Our AI solutions have helped numerous enterprises achieve significant business improvements through data analysis and intelligent prediction, creating greater value for enterprises.',
+                '收入增长': 'Revenue Growth',
+                '我们的AI预测模型帮助客户平均提升27%的销售额': 'Our AI prediction models help clients achieve an average 27% increase in sales through precise market analysis and customer insights, discovering new business opportunities.',
+                '客户满意度': 'Customer Satisfaction',
+                '智能客服系统帮助客户将满意度提升35%': 'Intelligent customer service systems help clients improve satisfaction by 35% while reducing service costs by 40%, achieving dual improvements in service quality and efficiency.',
+                '运营效率': 'Operational Efficiency',
+                '流程自动化解决方案帮助企业将重复性工作效率提升65%': 'Process automation solutions help enterprises improve repetitive work efficiency by 65%, allowing employees to invest more time in high-value creative work.',
+                '结合RPA和AI技术': 'Combining RPA and AI technology to achieve business process automation, improve work efficiency, and reduce labor costs.',
+                '流程识别与优化': 'Process Identification & Optimization',
+                '智能表单处理': 'Intelligent Form Processing',
+                '自动化决策支持': 'Automated Decision Support',
+                'AI安全解决方案': 'AI Security Solutions',
+                '利用人工智能技术提升企业安全防护能力': 'Use artificial intelligence technology to enhance enterprise security protection capabilities, real-time monitoring and response to various security threats.',
+                '异常行为检测': 'Abnormal Behavior Detection',
+                '安全事件预测': 'Security Event Prediction',
+                '智能威胁响应': 'Intelligent Threat Response',
+                'AI云平台服务': 'AI Cloud Platform Services',
+                '提供灵活可扩展的AI基础设施服务': 'Provide flexible and scalable AI infrastructure services to support enterprises in rapid deployment and management of AI applications.',
+                '模型训练与部署': 'Model Training & Deployment',
+                '资源弹性伸缩': 'Resource Elastic Scaling',
+                '多环境支持': 'Multi-environment Support',
+                '金融服务': 'Financial Services',
+                '智能风控系统': 'Intelligent Risk Control System',
+                '为某大型银行开发的AI风控系统，通过机器学习模型实时分析交易数据，识别潜在风险，欺诈检测准确率提升92%。': 'The AI risk control system developed for a large bank uses machine learning models to analyze transaction data in real-time, identify potential risks, and has increased the fraud detection accuracy rate by 92%.',
+                '智能生产优化系统': 'Smart Production Optimization',
+                '个性化学习平台': 'Personalized Learning Platform',
+                '智能路径规划系统': 'Smart Route Planning System',
+                '为在线教育机构打造的AI学习系统，根据学生学习行为提供定制化学习路径，学习效率提升42%，知识留存率提高35%。': 'An AI learning system designed for online education institutions, providing personalized learning paths based on students learning behaviors, increasing learning efficiency by 42% and knowledge retention by 35%.',
+                '为汽车制造企业开发的AI生产优化平台，通过实时分析生产数据预测设备故障，减少停机时间38%，生产效率提升25%。': 'An AI production optimization platform developed for automotive manufacturing enterprises can predict equipment failures by analyzing production data in real time, reducing downtime by 38% and increasing production efficiency by 25%.',
+                '为物流企业开发的AI路径优化系统，结合实时交通数据和天气情况动态调整配送路线，运输成本降低22%，准时率提升至98%。': 'The AI route optimization system developed for logistics enterprises dynamically adjusts the delivery routes by combining real - time traffic data and weather conditions. As a result, the transportation cost is reduced by 22% and the on - time rate is increased to 98%.',
+                '150万+用户': '1.5M+ Users',
+                '2024年': '2024',
+                '查看详情': 'View Details',
+                '安全监控Agent': 'Security Monitoring Agent',
+                '智能安全专家': 'Intelligent Security Expert',
+                '实时监控系统安全状态': 'Real-time monitoring of system security status, automatic detection of threats and abnormal behavior, providing intelligent security protection.',
+                '学习优化Agent': 'Learning Optimization Agent',
+                '智能学习助手': 'Intelligent Learning Assistant',
+                '持续学习和优化AI模型': 'Continuously learn and optimize AI models, automatically adjust algorithm parameters, and improve system performance.',
+                '医疗健康': 'Healthcare',
+                '医学影像诊断助手': 'Medical Imaging Diagnostic Assistant',
+                '与医疗机构合作开发的AI辅助诊断系统，帮助医生快速分析X光和CT影像，肺部结节检测准确率达到97%，诊断时间缩短60%。': 'AI-assisted diagnostic system developed in collaboration with medical institutions, helping doctors quickly analyze X-ray and CT images, with pulmonary nodule detection accuracy reaching 97% and diagnosis time reduced by 60%.',
+                '30+医院': '30+ Hospitals',
+                '2025年': '2025',
+                '零售电商': 'Retail E-commerce',
+                '个性化推荐引擎': 'Personalized Recommendation Engine',
+                '为某知名电商平台构建的AI推荐系统，基于用户行为数据提供个性化商品推荐，点击率提升45%，平均订单价值增长28%。': 'AI recommendation system built for a well-known e-commerce platform, providing personalized product recommendations based on user behavior data, increasing click-through rate by 45% and average order value by 28%.',
+                '500万+SKU': '5M+ SKUs',
+                '制造业': 'Manufacturing',
+                '为汽车制造企业开发的AI生产优化平台': 'AI production optimization platform developed for automotive manufacturing enterprises, predicting equipment failures through real-time analysis of production data, reducing downtime by 38% and improving production efficiency by 25%.',
+                '5家工厂': '5 Factories',
+                '教育科技': 'EdTech',
+                '为在线教育机构打造的AI学习系统': 'AI learning system built for online education institutions, providing customized learning paths based on student learning behavior, improving learning efficiency by 42% and knowledge retention by 35%.',
+                '20万+学生': '200K+ Students',
+                '物流运输': 'Logistics & Transportation',
+                '为物流企业开发的AI路径优化系统': 'AI route optimization system developed for logistics companies, dynamically adjusting delivery routes based on real-time traffic data and weather conditions, reducing transportation costs by 22% and improving on-time rate to 98%.',
+                '500+车辆': '500+ Vehicles',
+                '查看更多案例': 'View More Cases',
+                '来自各行各业客户的真实评价': 'Real testimonials from clients across various industries, witnessing the actual effectiveness of our AI solutions.',
+                '李明': 'Li Ming',
+                '技术总监，某金融科技公司': 'CTO, A Fintech Company',
+                'WCKJ提供的智能风控系统彻底改变了我们的业务模式': '"The intelligent risk control system provided by WCKJ has completely transformed our business model, not only significantly improving risk identification accuracy, but also significantly reducing operating costs. Their professional team provided full support to ensure smooth implementation and optimization of the system."',
+                '张华': 'Zhang Hua',
+                'CEO，某医疗设备公司': 'CEO, A Medical Device Company',
+                '与WCKJ合作开发的医学影像诊断助手': '"The medical imaging diagnostic assistant developed in collaboration with WCKJ is an important breakthrough in our product line. The accuracy of the system is impressive, helping our doctors make diagnoses faster and more accurately, greatly improving patient treatment outcomes."',
+                '王芳': 'Wang Fang',
+                '营销总监，某电商平台': 'Marketing Director, An E-commerce Platform',
+                '个性化推荐引擎的实施是我们近年来最成功的技术投资': '"The implementation of the personalized recommendation engine is one of our most successful technology investments in recent years. The WCKJ team deeply understood our business needs, and the customized solution not only improved conversion rates but also significantly enhanced user experience. Our customer satisfaction and revenue have both grown significantly."',
+                'WCKJ成立于2018年': 'WCKJ was founded in 2018 as a high-tech enterprise focused on artificial intelligence technology research and application. We have a professional R&D team composed of PhDs and Masters, committed to providing innovative and efficient AI solutions for enterprises.',
+                '企业客户': 'Enterprise Clients',
+                'AI专家': 'AI Experts',
+                '成功项目': 'Successful Projects',
+                '技术专利': 'Technical Patents',
+                '让我们一起探讨AI如何助力你的业务': 'Let\'s Explore How AI Can Empower Your Business',
+                '填写下方表单': 'Fill out the form below, and our professional team will contact you within 24 hours to provide you with customized AI solutions.',
+                '总部地址': 'Headquarters Address',
+                '联系电话': 'Contact Phone',
+                '电子邮箱': 'Email Address',
+                '感兴趣的服务': 'Services of Interest',
+                '请选择服务类型': 'Please select service type',
+                '咨询内容': 'Inquiry Content',
+                '请详细描述您的需求': 'Please describe your requirements in detail...',
+                '获取最新的AI行业资讯': 'Get the latest AI industry news, technology trends and solution cases to help your enterprise stay ahead in the AI era.',
+                '我们致力于为企业提供最前沿的人工智能解决方案': 'We are committed to providing enterprises with the most cutting-edge artificial intelligence solutions, helping enterprises achieve digital transformation and enhance core competitiveness.',
+                '公司简介': 'Company Profile',
+                '团队介绍': 'Team Introduction',
+                '技术博客': 'Tech Blog',
+                '加入我们': 'Join Us',
+                '隐私政策': 'Privacy Policy',
+                '服务条款': 'Terms of Service',
+                '法律声明': 'Legal Notice',
+                '网站地图': 'Site Map',
+                '© 2025 上海葳澄信息科技有限公司. 保留所有权利。': '© 2025 Shanghai Weicheng Information Technology Co., Ltd. All rights reserved.',
+                '联系信息': 'Contact Information',
+                '发送咨询': 'Send Inquiry',
+                '姓名': 'Name',
+                '电话': 'Phone',
+                '提交咨询': 'Submit Inquiry',
+                '订阅我们的AI技术动态': 'Subscribe to Our AI Updates',
+                '立即订阅': 'Subscribe Now',
+                '请输入您的姓名': 'Please enter your name',
+                '请输入您的电话': 'Please enter your phone',
+                '请输入您的电子邮箱': 'Please enter your email',
+                '上海市静安区共和新路4718弄10号1楼': '1F, No.10, Lane 4718, Gonghexin Rd, Jing\'an, Shanghai',
+                '18964673689': '+86 18964673689',
+                'jyu@wisdomitc.com': 'jyu@wisdomitc.com',
+                '周一至周五 9:00-18:00': 'Mon-Fri 9:00-18:00',
+                '计算机视觉解决方案': 'Computer Vision Solutions',
+                '基于深度学习的图像和视频分析技术': 'Image and video analysis technology based on deep learning, providing enterprises with automated visual detection and recognition capabilities.',
+                '物体检测与识别': 'Object Detection & Recognition',
+                '图像分类': 'Image Classification',
+                '视频监控分析': 'Video Surveillance Analysis',
+                '行业领先的AI应用案例': 'Industry-Leading AI Applications',
+                '探索我们如何帮助不同行业的客户利用AI技术实现业务突破和创新': 'Explore how we help clients from different industries use AI technology to achieve business breakthroughs and innovation.',
+                '客户如何评价我们的服务': 'What Customers Say About Our Services',
+                '请详细描述您的需求': 'Please describe your requirements in detail...'
+            }
+        };
+
+        // 语言切换下拉菜单
+        const langToggle = document.getElementById('lang-toggle');
+        const langDropdown = document.getElementById('lang-dropdown');
+
+        langToggle.addEventListener('click', function() {
+            langDropdown.classList.toggle('hidden');
+        });
+
+        // 点击外部关闭下拉菜单
+        document.addEventListener('click', function(event) {
+            if (!langToggle.contains(event.target) && !langDropdown.contains(event.target)) {
+                langDropdown.classList.add('hidden');
+            }
+        });
+
+        // 选择语言
+        document.querySelectorAll('#lang-dropdown a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                
+                // 应用语言设置
+                applyLanguage(lang);
+                langDropdown.classList.add('hidden');
+                
+                // 保存用户选择的语言
+                localStorage.setItem('preferred-language', lang);
+            });
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+        
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('max-h-0')) {
+                mobileMenu.classList.remove('max-h-0');
+                mobileMenu.classList.add('max-h-96');
+            } else {
+                mobileMenu.classList.add('max-h-0');
+                mobileMenu.classList.remove('max-h-96');
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('max-h-0')) {
+                        mobileMenu.classList.add('max-h-0');
+                        mobileMenu.classList.remove('max-h-96');
+                    }
+                }
+            });
+        });
+        
+        // 性能图表
+        function initChart() {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            const isEnglish = document.querySelector('#lang-toggle span').textContent.includes('English');
+            window.performanceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                    datasets: [
+                        {
+                            label: isEnglish ? 'Revenue Growth' : '收入增长',
+                            data: [12, 19, 23, 29, 35, 42],
+                            borderColor: '#FF7D00',
+                            backgroundColor: 'rgba(255, 125, 0, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: isEnglish ? 'Efficiency Improvement' : '效率提升',
+                            data: [8, 15, 20, 25, 30, 38],
+                            borderColor: '#FF9500',
+                            backgroundColor: 'rgba(255, 149, 0, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: isEnglish ? 'Customer Satisfaction' : '客户满意度',
+                            data: [5, 10, 15, 22, 28, 34],
+                            borderColor: '#FFB88C',
+                            backgroundColor: 'rgba(255, 184, 140, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: isEnglish ? 'Improvement Percentage (%)' : '提升百分比 (%)',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: isEnglish ? 'Year' : '年份',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 页面加载时自动设置语言
+        window.addEventListener('load', function() {
+            // 检查是否有用户保存的语言偏好
+            const savedLang = localStorage.getItem('preferred-language');
+            const systemLang = detectSystemLanguage();
+            const targetLang = savedLang || systemLang;
+            
+            // 应用语言设置
+            applyLanguage(targetLang);
+            
+            // 初始化图表
+            initChart();
+        });
+        
+        // 瀑布流滚动显示动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.masonry-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+
+        // 服务详情数据
+        const serviceDetails = {
+            'chatbot': {
+                title: '智能客服系统',
+                content: `
+                    <div class="space-y-6">
+                        <img src="https://picsum.photos/id/1060/800/400" alt="智能客服系统" class="w-full h-64 object-cover rounded-lg">
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">系统特点</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>24/7全天候智能服务</li>
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>多语言支持，覆盖全球客户</li>
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>智能学习，持续优化回答质量</li>
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>无缝对接现有业务系统</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">技术优势</h4>
+                            <p class="text-gray-600">采用最新的自然语言处理技术，结合深度学习算法，能够理解复杂的用户意图，提供准确、个性化的回答。系统具备情感分析能力，能够识别客户情绪并做出相应调整。</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="text-lg font-bold mb-2">预期效果</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-primary">85%</div>
+                                    <div class="text-sm text-gray-600">问题解决率</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-primary">60%</div>
+                                    <div class="text-sm text-gray-600">成本降低</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'analytics': {
+                title: '预测分析平台',
+                content: `
+                    <div class="space-y-6">
+                        <img src="https://picsum.photos/id/1061/800/400" alt="预测分析平台" class="w-full h-64 object-cover rounded-lg">
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">核心功能</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>销售预测与需求分析</li>
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>风险评估与预警系统</li>
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>市场趋势分析</li>
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>客户行为预测</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">应用场景</h4>
+                            <p class="text-gray-600">适用于零售、金融、制造、物流等多个行业。通过分析历史数据和实时数据，帮助企业做出更明智的商业决策，提前识别机会和风险。</p>
+                        </div>
+                    </div>
+                `
+            },
+            'vision': {
+                title: '计算机视觉解决方案',
+                content: `
+                    <div class="space-y-6">
+                        <img src="https://picsum.photos/id/1062/800/400" alt="计算机视觉" class="w-full h-64 object-cover rounded-lg">
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">技术能力</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>人脸识别与身份验证</li>
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>产品质量检测</li>
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>安全监控与异常检测</li>
+                                <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>OCR文字识别</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">行业应用</h4>
+                            <p class="text-gray-600">广泛应用于制造业质检、零售业商品识别、安防监控、医疗影像分析等领域。通过深度学习算法，实现高精度的图像识别和分析。</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // 案例详情数据
+        const caseDetails = {
+            'finance': {
+                title: '智能风控系统 - 金融服务案例',
+                content: `
+                    <div class="space-y-6">
+                        <img src="https://picsum.photos/id/20/800/400" alt="金融风控系统" class="w-full h-64 object-cover rounded-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xl font-bold mb-3">项目背景</h4>
+                                <p class="text-gray-600 mb-4">某大型银行面临日益复杂的金融欺诈风险，传统的规则引擎已无法满足实时风控需求。需要一套智能化的风控系统来提升欺诈检测能力。</p>
+                                <h4 class="text-xl font-bold mb-3">解决方案</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>实时交易监控</li>
+                                    <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>机器学习风险评分</li>
+                                    <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>异常行为检测</li>
+                                    <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>智能决策引擎</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-3">项目成果</h4>
+                                <div class="space-y-4">
+                                    <div class="bg-primary/10 p-4 rounded-lg">
+                                        <div class="text-2xl font-bold text-primary">92%</div>
+                                        <div class="text-sm text-gray-600">欺诈检测准确率提升</div>
+                                    </div>
+                                    <div class="bg-green-100 p-4 rounded-lg">
+                                        <div class="text-2xl font-bold text-green-600">150万+</div>
+                                        <div class="text-sm text-gray-600">服务用户数量</div>
+                                    </div>
+                                    <div class="bg-blue-100 p-4 rounded-lg">
+                                        <div class="text-2xl font-bold text-blue-600">45%</div>
+                                        <div class="text-sm text-gray-600">风险损失降低</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">技术架构</h4>
+                            <p class="text-gray-600">采用分布式架构，支持高并发实时处理。集成多种机器学习算法，包括随机森林、神经网络、异常检测等，形成多层防护体系。</p>
+                        </div>
+                    </div>
+                `
+            },
+            'healthcare': {
+                title: '医学影像诊断助手 - 医疗健康案例',
+                content: `
+                    <div class="space-y-6">
+                        <img src="https://picsum.photos/id/26/800/400" alt="医学影像诊断" class="w-full h-64 object-cover rounded-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xl font-bold mb-3">项目概述</h4>
+                                <p class="text-gray-600 mb-4">与多家三甲医院合作开发的AI辅助诊断系统，专注于肺部疾病的早期筛查和诊断，帮助医生提高诊断效率和准确性。</p>
+                                <h4 class="text-xl font-bold mb-3">核心技术</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>深度卷积神经网络</li>
+                                    <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>图像分割与特征提取</li>
+                                    <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>多模态数据融合</li>
+                                    <li class="flex items-start gap-2"><i class="fa fa-check text-green-500 mt-1"></i>可解释性AI</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-3">应用效果</h4>
+                                <div class="space-y-4">
+                                    <div class="bg-green-100 p-4 rounded-lg">
+                                        <div class="text-2xl font-bold text-green-600">97%</div>
+                                        <div class="text-sm text-gray-600">肺部结节检测准确率</div>
+                                    </div>
+                                    <div class="bg-blue-100 p-4 rounded-lg">
+                                        <div class="text-2xl font-bold text-blue-600">60%</div>
+                                        <div class="text-sm text-gray-600">诊断时间缩短</div>
+                                    </div>
+                                    <div class="bg-purple-100 p-4 rounded-lg">
+                                        <div class="text-2xl font-bold text-purple-600">30+</div>
+                                        <div class="text-sm text-gray-600">合作医院</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">临床价值</h4>
+                            <p class="text-gray-600">系统能够在几秒钟内完成影像分析，标注可疑区域，为医生提供诊断建议。特别在早期肺癌筛查方面表现突出，显著提高了早期发现率。</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // 模态框功能
+        function showServiceModal(serviceType) {
+            const modal = document.getElementById('serviceModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            if (serviceDetails[serviceType]) {
+                title.textContent = serviceDetails[serviceType].title;
+                content.innerHTML = serviceDetails[serviceType].content;
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function showCaseModal(caseType) {
+            const modal = document.getElementById('caseModal');
+            const title = document.getElementById('caseModalTitle');
+            const content = document.getElementById('caseModalContent');
+            
+            if (caseDetails[caseType]) {
+                title.textContent = caseDetails[caseType].title;
+                content.innerHTML = caseDetails[caseType].content;
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('successToast');
+            toast.querySelector('span').textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // 绑定事件监听器
+        document.addEventListener('DOMContentLoaded', function() {
+            // 服务卡片"了解更多"按钮
+            document.querySelectorAll('.masonry-grid .card-3d a[href="#contact"]').forEach((link, index) => {
+                const serviceTypes = ['chatbot', 'analytics', 'vision', 'automation', 'security', 'cloud'];
+                if (serviceTypes[index]) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        showServiceModal(serviceTypes[index]);
+                    });
+                }
+            });
+
+            // 案例"查看详情"按钮
+            document.querySelectorAll('#cases .card-hover a[href="#contact"]').forEach((link, index) => {
+                const caseTypes = ['finance', 'healthcare', 'retail', 'manufacturing', 'education', 'logistics'];
+                if (caseTypes[index]) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (index === 0) showCaseModal('finance');
+                        else if (index === 1) showCaseModal('healthcare');
+                        else showToast('更多案例详情即将上线！');
+                    });
+                }
+            });
+
+            // 模态框关闭按钮
+            document.getElementById('closeModal').addEventListener('click', () => closeModal('serviceModal'));
+            document.getElementById('closeModalBtn').addEventListener('click', () => closeModal('serviceModal'));
+            document.getElementById('closeCaseModal').addEventListener('click', () => closeModal('caseModal'));
+            document.getElementById('closeCaseModalBtn').addEventListener('click', () => closeModal('caseModal'));
+
+            // 咨询按钮
+            document.getElementById('consultBtn').addEventListener('click', function() {
+                closeModal('serviceModal');
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            document.getElementById('caseConsultBtn').addEventListener('click', function() {
+                closeModal('caseModal');
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // 点击模态框外部关闭
+            document.getElementById('serviceModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal('serviceModal');
+            });
+            
+            document.getElementById('caseModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal('caseModal');
+            });
+
+            // 表单提交处理
+            document.querySelector('#contact form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 获取表单数据
+                const formData = {
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    service: document.getElementById('service').value,
+                    message: document.getElementById('message').value
+                };
+                
+                // 简单验证
+                if (!formData.name || !formData.email || !formData.message) {
+                    alert('请填写必填字段！');
+                    return;
+                }
+                
+                // 模拟提交
+                console.log('表单数据:', formData);
+                showToast('咨询提交成功！我们将在24小时内联系您。');
+                
+                // 清空表单
+                this.reset();
+            });
+
+            // 订阅表单处理
+            document.querySelector('section form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    showToast('订阅成功！感谢您的关注。');
+                    this.reset();
+                } else {
+                    alert('请输入有效的邮箱地址！');
+                }
+            });
+
+            // 社交媒体链接功能
+            document.querySelectorAll('a[href="#"]').forEach(link => {
+                if (link.querySelector('.fa-weixin')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        showToast('请扫描二维码添加微信！');
+                    });
+                } else if (link.querySelector('.fa-weibo')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.open('https://weibo.com', '_blank');
+                    });
+                } else if (link.querySelector('.fa-linkedin')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.open('https://linkedin.com', '_blank');
+                    });
+                } else if (link.querySelector('.fa-twitter')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.open('https://twitter.com', '_blank');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
